@@ -1,0 +1,60 @@
+#include <iostream> 
+#include <string> 
+using namespace std; 
+ 
+void checkPassword() { 
+    string defp = "PICT123*", k; 
+    cout << "Enter the Password: "; 
+    cin >> k; 
+    cout << (defp == k ? "It is a default Password" : "It is not a default Password") << "\n"; 
+} 
+ 
+void resetPassword() { 
+    string newp, fp; 
+    cout << "Enter new Password: "; 
+    cin >> newp; 
+    cout << "Confirm Password: "; 
+    cin >> fp; 
+    cout << (newp == fp ? "Password reset successfully" : "Passwords do not match") << "\n"; 
+} 
+ 
+void displayUnknownPassword() { 
+    string l; 
+    cout << "Enter the Password: "; 
+    cin >> l; 
+    for (char c : l) cout << ((isalpha(c)) ? c : '*'); 
+    cout << "\n"; 
+} 
+ 
+void encryptPassword() { 
+    string epass; 
+    cout << "Enter Password to Encrypt: "; 
+    cin >> epass; 
+    for (char &c : epass) c += 2; 
+    cout << "Encrypted Password: " << epass << "\n"; 
+} 
+ 
+void decryptPassword() { 
+    string epass; 
+    cout << "Enter Password to Decrypt: "; 
+    cin >> epass; 
+    for (char &c : epass) c -= 2; 
+    cout << "Decrypted Password: " << epass << "\n"; 
+} 
+ 
+int main() { 
+    int x; 
+    do { 
+        cout << "1-Check Password, 2-Reset, 3-Display, 4-Encrypt, 5-Decrypt, 6-Exit\n"; 
+        cin >> x; 
+        switch (x) { 
+            case 1: checkPassword(); break; 
+            case 2: resetPassword(); break; 
+            case 3: displayUnknownPassword(); break; 
+            case 4: encryptPassword(); break; 
+            case 5: decryptPassword(); break; 
+            case 6: cout << "Exiting...\n"; break; 
+            default: cout << "Invalid option. Try again.\n"; 
+        } 
+    } while (x != 6); 
+}
